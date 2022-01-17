@@ -1,3 +1,6 @@
 [submodule "polybar-themes"]
 	path = polybar-themes
 	url = https://github.com/cr0ax/polybar-themes.git
+[submodule ".config/base16-shell"]
+	path = .config/base16-shell
+	url = git@github.com:cr0ax/base16-shell.git
