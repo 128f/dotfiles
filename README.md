@@ -13,7 +13,6 @@
 
 ## misc
 
-`
 #### sound
 
 pulseaudio-alsa
