@@ -8,6 +8,7 @@ alias ga='git add'
 alias gdc='git diff --cached'
 alias gd='git diff'
 alias gc='git commit'
+alias gpo='git push origin'
 
 # yadm
 alias ychk='yadm checkout'
@@ -17,6 +18,7 @@ alias ya='yadm add'
 alias ydc='yadm diff --cached'
 alias yd='yadm diff'
 alias yc='yadm commit'
+alias ypo='yadm push origin'
 
 # there's only one vim
 alias vi=nvim
