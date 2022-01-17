@@ -1,0 +1,83 @@
+# aliases and functions
+
+# git aliases
+alias gchk='git checkout'
+alias gst='git status'
+alias gr='git reset'
+alias ga='git add'
+alias gdc='git diff --cached'
+alias gd='git diff'
+alias gc='git commit'
+
+# yadm
+alias ychk='yadm checkout'
+alias yst='yadm status'
+alias yr='yadm reset'
+alias ya='yadm add'
+alias ydc='yadm diff --cached'
+alias yd='yadm diff'
+alias yc='yadm commit'
+
+# there's only one vim
+alias vi=nvim
+alias vim=nvim
+alias vimf='nvim $(fzf)'
+
+# nicer versions of stuff
+alias ls='exa -a'
+alias ll='exa -l'
+alias la='exa -la'
+
+# docker aliases that probably need work
+alias dps='docker ps -a'
+alias dimg='docker images -a'
+alias dvol='docker volume ls'
+alias dkill='docker kill'
+
+# idk
+alias suspend='systemctl suspend'
+alias hibernate='systemctl hibernate'
+
+# ???
+# alias rtags='rusty-tags vi -O tags'
+# alias dog='pygmentize -g'
+
+# load up ssh-keys
+alias sshup='eval `ssh-agent -s`'
+
+# kill! destroy!
+function docker-purge() {
+    docker ps -aq | xargs docker kill
+    docker ps -aq | xargs docker rm
+    docker images -aq | xargs docker rmi
+    docker volume ls | xargs docker volume rm
+    docker ps -a
+    docker images -a
+    docker volume ls
+}
+
+function sshad() {
+    sshup;
+    ssh-add $HOME/.ssh/$1
+}
+
+# clone and move into the dir
+function mkgit () {
+    git clone $1 && cd $(basename $1 .git)
+}
+
+# add items matching the grep
+function gaddf() {
+    if [ $2="-s" ]; then
+        # s for "silent", "show", "sdryrun"
+        git status | grep $1 | awkc 2
+    else
+        git status | grep $1 | awkc 2 | xargs git add
+    fi
+}
+
+# tmux command for setting width to a specified ratio
+function pct() {
+    tmux setw 'main-pane-width' $(( `tmux display -p '#{window_width}'`* $1/100 ));
+    tmux select-layout main-vertical;
+}
