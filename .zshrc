@@ -48,10 +48,9 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.cargo/bin
 alias vi=vim
 
-# export GOPATH=$(go env GOPATH)
-# export GOBIN=$GOPATH/bin
-# export PATH=$PATH:$GOBIN
-
+export GOPATH=$(go env GOPATH)
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx

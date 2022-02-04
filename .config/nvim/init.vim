@@ -1,6 +1,6 @@
 :call plug#begin('~/.config/nvim')
 " The essentials - syntax checking, finding files, autocomplete, etc
-    " Plug 'dense-analysis/ale'
+    Plug 'dense-analysis/ale'
     Plug 'junegunn/fzf'
     " Plug 'preservim/nerdtree'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -9,14 +9,29 @@
     Plug 'tpope/vim-commentary'
     Plug 'airblade/vim-rooter'
     Plug 'editorconfig/editorconfig-vim'
-    " Plug 'Shougo/neosnippet.vim'
-    " Plug 'Shougo/neosnippet-snippets'
+""" tree plugin
+    " Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    " Plug 'kyazdani42/nvim-tree.lua'
+""" telescope.nvim 
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+" lsp stuff
+    " dependencies
+    " Plug 'nvim-lua/plenary.nvim'
+    " Plug 'nvim-lua/popup.nvim'
+    " " nvim-go
+    " Plug 'crispgm/nvim-go'
+    " " (recommend) LSP config
+    " Plug 'neovim/nvim-lspconfig'
 " opengl shaders
     Plug 'tikhomirov/vim-glsl'
 " nice rice
     Plug 'machakann/vim-highlightedyank'
     Plug 'tpope/vim-surround'
-    Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline'
+    Plug 'ojroques/nvim-hardline'
+""" lines
+    " Plug 'lukas-reineke/indent-blankline.nvim'
 " javascript
     Plug 'yuezk/vim-js'
     Plug 'maxmellon/vim-jsx-pretty'
@@ -24,16 +39,18 @@
     Plug 'peitalin/vim-jsx-typescript'
     " Plug 'kien/ctrlp.vim'
 " themes
-    Plug 'chriskempson/base16-vim'
-    " Plug 'Soares/base16.nvim'
+    " Plug 'chriskempson/base16-vim'
+    Plug 'Soares/base16.nvim'
 " godot
     Plug 'habamax/vim-godot'
 " solidity
     Plug 'tomlion/vim-solidity'
 :call plug#end()
 
+lua require('hardline').setup {}
+
 " nmap <C-n> :NERDTreeToggle<CR>
-nmap <C-p> :FZF<CR>
+" nmap <C-p> :FZF<CR>
 nmap <C-t> :tabnew<CR>
 nnoremap <esc> :noh<return><esc>
 :set relativenumber
@@ -59,19 +76,28 @@ nnoremap <esc> :noh<return><esc>
 "   autocmd ColorScheme * call s:base16_customize()
 " augroup END
 
-let base16colorspace=256
-" :colorscheme base16-material-palenight
-:set background=dark
+" let base16colorspace=256
+" " :colorscheme base16-material-palenight
+" :set background=dark
 :set termguicolors&
 
 "
 " ale config
 "
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['tsserver', 'tslint'],
-\   'vue': ['eslint']
-\}
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \   'typescript': ['tsserver', 'tslint'],
+" \   'vue': ['eslint']
+" \}
+
+nmap <C-p> :Telescope find_files<cr>
+nmap <S-f> :Telescope live_grep<cr>
+nmap <silent> <M-CR> :call CocActionAsync('doQuickfix')<cr>
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "
 "coc config
