@@ -6,7 +6,7 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
 	-- Simple plugins can be specified as strings
-	use '9mm/vim-closer'
+	use 'rstacruz/vim-closer'
 
 	-- The essentials - syntax checking, finding files, autocomplete, etc
 	-- use 'dense-analysis/ale'
@@ -45,9 +45,9 @@ return require('packer').startup(function()
 	use 'tikhomirov/vim-glsl'
 	-- nice rice
 	use 'machakann/vim-highlightedyank'
-	use 'tpope/vim-surround'
+	-- use 'tpope/vim-surround'
 	-- use 'vim-airline/vim-airline'
-	use 'ojroques/nvim-hardline'
+	-- use 'ojroques/nvim-hardline'
 	--- lines
 	-- use 'lukas-reineke/indent-blankline.nvim'
 	-- javascript
@@ -65,7 +65,7 @@ return require('packer').startup(function()
 	-- solidity
 	use 'tomlion/vim-solidity'
 
-	use {'andymass/vim-matchup', event = 'VimEnter'}
+	-- use {'andymass/vim-matchup', event = 'VimEnter'}
 	-- use {
 	-- 	'w0rp/ale',
 	-- 	ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
