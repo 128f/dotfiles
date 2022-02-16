@@ -14,6 +14,12 @@ map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', options)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
 
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
+
+map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', options)
+map('n', '<leader>r', '<cmd>NvimTreeRefresh<CR>', options)
+map('n', '<leader>n', '<cmd>:NvimTreeFindFile<CR>', options)
+
 --- completion commands
 -- map('n', '<silent>', '<M-CR> :call CocActionAsync(\'doQuickfix\')<cr>', options)
 -- map('n', '<silent>gd', '<Plug>(coc-definition)', options)

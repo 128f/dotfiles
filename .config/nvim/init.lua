@@ -4,6 +4,7 @@ require('plugins')
 require('feline').setup()
 require('snippets')
 require('keymap')
+require('tree')
 
 --- Set our current base16 theme from env
 nvim = require 'nvim'

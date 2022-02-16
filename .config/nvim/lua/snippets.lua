@@ -1,10 +1,4 @@
 
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local lspconfig = require('lspconfig')
-
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -31,14 +25,40 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+local lspconfig = require('lspconfig')
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'gopls', 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = { 'gopls', 'clangd', 'pyright', 'tsserver' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
+
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    ["rust-analyzer"] = {
+      inlayHints = {
+        typeHints = true,
+      },
+      cargo = {
+        allFeatures = true,
+      },
+      completion = {
+	postfix = {
+	  enable = false,
+	},
+      },
+    },
+  },
+  capabilities = capabilities,
+}
 
 -- luasnip setup
 local luasnip = require 'luasnip'
