@@ -29,7 +29,7 @@ font-family = Fira Code
 font-size = 13
 
 # Transparency & blur
-background-opacity = 0.9
+background-opacity = 0.88
 background-blur-radius = 20
 
 # Window
