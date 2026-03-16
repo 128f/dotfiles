@@ -1,5 +1,5 @@
 # ctrl + alt - t : open -na "kitty"
-cmd - return : open -a Ghostty
+cmd - return : open -na Ghostty
 
 # ===========================
 # skhd config — i3-style binds

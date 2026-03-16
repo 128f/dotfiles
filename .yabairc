@@ -18,6 +18,7 @@ yabai -m config right_padding  8
 
 # Gap between windows
 yabai -m config window_gap 8
+yabai -m signal --add event=window_created app="^Ghostty$" action="yabai -m space --balance"
 
 # Mouse follows focused window
 yabai -m config mouse_follows_focus on
