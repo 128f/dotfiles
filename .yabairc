@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+
+# ===========================
+# yabairc — reasonable defaults
+# ===========================
+
+# Tiling mode (bsp = binary space partitioning, like i3)
+yabai -m config layout bsp
+
+# New window spawns to the right/bottom
+yabai -m config window_placement second_child
+
+# Padding around the screen edges
+yabai -m config top_padding    8
+yabai -m config bottom_padding 8
+yabai -m config left_padding   8
+yabai -m config right_padding  8
+
+# Gap between windows
+yabai -m config window_gap 8
+
+# Mouse follows focused window
+yabai -m config mouse_follows_focus on
+
+# Click a window to focus it
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+
+# Don't tile these apps (they behave badly as tiled windows)
+#
+# HOW TO FIND THE APP NAME:
+#   Option 1 — yabai query (most reliable):
+#     yabai -m query --windows | grep '"app"'
+#   This lists all open windows and their app names as yabai sees them.
+#
+#   Option 2 — from the menu bar:
+#     Open the app, look at the top-left of the menu bar — that text is usually the app name.
+#
+#   Option 3 — from Finder:
+#     Find the .app in /Applications, the filename without ".app" is usually the name.
+#
+#   The ^...$ syntax is a regex: ^ = start, $ = end, so it must match exactly.
+#   Example: app="^Firefox$" will match "Firefox" but not "Firefox Developer Edition"
+#
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^System Settings$"    manage=off
+yabai -m rule --add app="^Calculator$"         manage=off
+yabai -m rule --add app="^Finder$"             manage=off
+yabai -m rule --add app="^Alfred$"             manage=off
+yabai -m rule --add app="^Raycast$"            manage=off
+yabai -m rule --add app="^1Password$"          manage=off
+yabai -m rule --add app="^Archive Utility$"    manage=off
+
+borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
