@@ -1,8 +1,10 @@
 # dotfiles
 
+Mac dotfiles on the mac branch, linux on the linux branch.
+
 ...
 
-### Software to install
+### Linux Software to install
 
 aka stuff that _really_ should be in a bootstrap script
 
@@ -23,6 +25,6 @@ pamac
 * cargo install exa
 * nvim -c "PackerSync"
 
-## Sound thing you might want?
+## Mac Software to install
 
-pulseaudio-alsa
+tbd
