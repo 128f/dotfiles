@@ -1,62 +1,61 @@
--- following options are the default
--- each of these are documented in `:help nvim-tree.OPTION_NAME`
+-- nvim-tree file explorer. See `:help nvim-tree.OPTION_NAME`.
 require'nvim-tree'.setup {
-  disable_netrw       = true,
-  hijack_netrw        = true,
-  -- auto_close          = false,
-  open_on_tab         = false,
-  hijack_cursor       = false,
-  update_cwd          = false,
-  -- update_to_buf_dir   = {
-  --   enable = true,
-  --   auto_open = true,
-  -- },
+  disable_netrw  = true,
+  hijack_netrw   = true,
+  hijack_cursor  = false,
+  sync_root_with_cwd = true,
+
+  -- Surface LSP errors/warnings next to files in the tree.
   diagnostics = {
-    enable = false,
+    enable = true,
+    show_on_dirs = true,
     icons = {
-      hint = "",
-      info = "",
+      hint    = "󰌶",
+      info    = "",
       warning = "",
-      error = "",
-    }
+      error   = "",
+    },
   },
+
+  -- Reveal and highlight the file you're editing.
   update_focused_file = {
-    enable      = false,
-    update_cwd  = false,
-    ignore_list = {}
+    enable = true,
+    update_root = false,
   },
-  system_open = {
-    cmd  = nil,
-    args = {}
-  },
+
   filters = {
     dotfiles = false,
-    custom = {}
+    custom = {},
   },
+
   git = {
-    enable = true,
-    ignore = true,
+    enable  = true,
+    ignore  = true,
     timeout = 500,
   },
+
   view = {
-    width = 30,
-    -- height = 30,
-    side = 'left',
-    -- auto_resize = false,
+    width  = 32,
+    side   = 'left',
     number = false,
     relativenumber = false,
-    signcolumn = "yes"
+    signcolumn = "yes",
   },
+
+  renderer = {
+    group_empty = true,
+    highlight_git = true,
+    icons = {
+      show = { file = true, folder = true, folder_arrow = true, git = true },
+    },
+  },
+
+  actions = {
+    change_dir = { global = false },
+    open_file  = { quit_on_open = false },
+  },
+
   trash = {
     cmd = "trash",
-    require_confirm = true
   },
-  actions = {
-    change_dir = {
-      global = false,
-    },
-    open_file = {
-      quit_on_open = false,
-    }
-  }
 }

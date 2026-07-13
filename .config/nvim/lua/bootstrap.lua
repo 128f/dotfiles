@@ -18,14 +18,13 @@ require("lazy").setup("lazy-plugins", {
     lazy = false,
     version = false, -- always use the latest git commit
   },
-  install = { colorscheme = { "jellybeans", "habamax" } },
+  install = { colorscheme = { "catppuccin", "jellybeans", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
       disabled_plugins = {
         "gzip",
         "matchit",
-        "matchparen",
         "netrwPlugin",
         "tarPlugin",
         "tohtml",

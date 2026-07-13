@@ -22,7 +22,8 @@
 # a full restart to take effect.
 
 # Theme
-theme = Cobalt2
+#theme = Cobalt2
+theme = Everforest Dark Hard
 
 # Font
 font-family = Fira Code
@@ -39,3 +40,5 @@ window-inherit-working-directory = true
 
 quit-after-last-window-closed = true
 shell-integration-features = no-cursor
+# custom-shader = ./ghostty-shaders/cursor_blaze.glsl
+

@@ -1,16 +1,14 @@
+-- Leader must be set before plugins/keymaps load
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Load lazy.nvim plugin manager
 require('bootstrap')
 
 -- Set colorscheme with fallback
-vim.cmd("colorscheme jellybeans")
+vim.cmd("colorscheme catppuccin")
 
--- Time-based light/dark mode
-local hour = tonumber(os.date('%H'))
-if hour < 19 then
-    vim.cmd('set bg=light')
-else
-    vim.cmd('set bg=dark')
-end
+vim.cmd('set bg=dark')
 
 -- Load configuration modules
 require('opts')
