@@ -111,8 +111,10 @@ return {
     end,
   },
 
-  -- On-demand AI completion (qwen-coder via Ollama on the LAN). Not an
-  -- automatic cmp source; invoked manually with <C-g> (see completion.lua).
+  -- On-demand AI completion (qwen2.5-coder:7b via Ollama on the LAN at
+  -- 192.168.8.195). NOT an automatic cmp source and NOT ghost text — invoked
+  -- manually with <C-g> from insert mode (see completion.lua), so the slow
+  -- networked model never blocks normal typing/completion.
   {
     "milanglacier/minuet-ai.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -123,11 +125,14 @@ return {
         provider = 'openai_fim_compatible',
         n_completions = 1,
         context_window = 512,
+        -- The networked 7B model takes ~4-5s per request (cold starts longer);
+        -- minuet's default 3s timeout cancels it before any tokens arrive.
+        request_timeout = 6,
         provider_options = {
           openai_fim_compatible = {
             api_key = 'TERM', -- Ollama needs no key; any existing env var name works
             name = 'Ollama',
-            end_point = 'http://localhost:11434/v1/completions',
+            end_point = 'http://192.168.8.195:11434/v1/completions',
             model = 'qwen2.5-coder:7b',
             optional = {
               max_tokens = 128,

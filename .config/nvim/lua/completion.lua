@@ -41,7 +41,7 @@ cmp.setup {
   },
   sources = {
     -- minuet (AI) is intentionally NOT here — it's invoked on demand via
-    -- <A-Space> so the slow local model doesn't stall normal completion.
+    -- <C-g> so the slow local model doesn't stall normal completion.
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer' },
